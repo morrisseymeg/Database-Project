@@ -13,6 +13,12 @@
             return;
         }
     }      
+    $stmt = $pdo->query("SELECT id, uniqname, pw FROM userinfo");
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {  
+        if ($_POST['uniqname'] == $row['uniqname'] && $_POST['pw'] == $row['pw']){
+            header('Location: main.php');
+        }
+    }  
 ?>
 <html>
 <head>
