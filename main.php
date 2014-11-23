@@ -4,15 +4,17 @@ session_start();
 
 if ( isset($_POST['day'])) {
      
-     $sql = "INSERT INTO days (day, user_id) 
-              VALUES (:day, :user_id)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':day' => $_POST['day'],
-        ':user_id' => $_SESSION['user_id']))
-   $_SESSION['success'] = 'Record Added';
-   header( 'Location: index.php' ) ;
-   return;
+
+  $sql = "INSERT INTO days (day, user_id) 
+    VALUES (:day, :user_id)";
+
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(array(
+    ':day' => $_POST['day'],
+    ':user_id' => $_SESSION['user_id']))
+  $_SESSION['success'] = 'Record Added';
+  header( 'Location: index.php' ) ;
+  return;
 }
 
 //Flash pattern
