@@ -14,10 +14,12 @@
         //     return;
         // }
         
-    $stmt = $pdo->query("SELECT uniqname, pw FROM userinfo");
+    $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo");
     while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {  
         if ($_POST['uniqname'] == $row['uniqname'] && $_POST['pw'] == $row['pw']){
             header('Location: main.php');
+            $_SESSION['user_id'] = $row['user_id'];
+            echo $row['user_id'];
         }
         else{
             $_SESSION['error'] = "Your uniqname or password is incorrect.";
@@ -34,6 +36,9 @@
     if ( isset($_SESSION["error"]) ) {
         echo('<p style="color:red">Error:'.$_SESSION["error"]."</p>\n");
         unset($_SESSION["error"]);
+    }
+    if ( isset($SESSION['user_id']) ) {
+    echo '<p>user_id: '.$_SESSION['user_id'].'</p>';
     }
 ?>
 <form method="post">
