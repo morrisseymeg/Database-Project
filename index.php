@@ -13,9 +13,11 @@
         //     header( 'Location: login.php' ) ;
         //     return;
         // }
-        
-    $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo");
-    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {  
+        $uniqname = $_POST['uniqname']
+    // How to do something like where userinfo.uniqunmae == $uniqname?
+        $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo WHERE ");
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) 
+        {  
         if ($_POST['uniqname'] == $row['uniqname'] && $_POST['pw'] == $row['pw']){
             $_SESSION['user_id'] = $row['user_id'];
             // echo $row['user_id'];
