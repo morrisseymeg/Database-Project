@@ -13,11 +13,10 @@
         //     header( 'Location: login.php' ) ;
         //     return;
         // }
-        $uniqname = $_POST['uniqname']
+        $uniqname = $_POST['uniqname'];
     // How to do something like where userinfo.uniqunmae == $uniqname?
-        $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo WHERE ");
-    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) 
-        {  
+        $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo");
+    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ){  
         if ($_POST['uniqname'] == $row['uniqname'] && $_POST['pw'] == $row['pw']){
             $_SESSION['user_id'] = $row['user_id'];
             // echo $row['user_id'];
@@ -49,7 +48,8 @@
 ?>
 <form method="post">
 <p>Uniqname: <input type="text" name="uniqname" value=""></p>
-<p>Password: <input type="text" name="pw" value=""></p>
+<!-- replace text type with password type -->
+<p>Password: <input type="text" name="pw" value=""></p> 
 <p><input type="submit" value="Log In"></p>
 </form>
 </br>

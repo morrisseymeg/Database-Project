@@ -52,7 +52,7 @@ session_start();
       ?>
       <tr> </tr>
       <td> </td>
-      <td style="padding=0.5%"> Mo </td>
+      <td> Mo </td>
       <td> Tu </td>
       <td> Wed</td>
       <td> Th </td>
@@ -63,21 +63,24 @@ session_start();
       	$i = 0;
 		$j = 8;
 		$t = 0;
+    $p = 0;
       	while ($i<224) {
-      		if ($i%7==0){
-      			echo "<tr>".PHP_EOL;;
-				$j1 = $j + 1;
-				if ($t%2==0) {
-					echo "<td>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
-					$j++;
-				} else {
-				    echo "<td>"."$j:00- $j:30\n"."</td>".PHP_EOL;
-				}
+      		if ($i%8==0){
+      			echo "<tr>".PHP_EOL;
+    				$j1 = $j + 1;
+            $p++;
+    				if ($t%2==0) {
+    					echo "<td id='time_$p'>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
+    					$j++;
+    				} else {
+    				  echo "<td id='time_$p'>"."$j:00- $j:30 \n"."</td>".PHP_EOL;
+    				}
 				$t++;
       			
 
-      		}
-      		echo "<td>".$i."</td>".PHP_EOL;
+      		} else {
+      		  echo "<td id='$i'>".$i."</td>".PHP_EOL;
+        }
       		$i++;
       	}
       ?>
