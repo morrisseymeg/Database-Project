@@ -11,7 +11,14 @@ if ( strlen($_POST['uniqname']) < 1 || strlen($_POST['email']) < 1 || strlen($_P
         header("Location: signup.php");
         return;
     }
-
+$stmt = $pdo->query("SELECT uniqname FROM userinfo");
+while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ){ 
+    if ( $_POST['uniqname'] == $row['uniqname']) {
+        $_SESSION['error'] = 'That uniqname has been used. Would you like to <a href="index.php">log in</a>?';
+        header("Location: signup.php");
+        die;
+        }
+    }
     $sql = "INSERT INTO userinfo ( uniqname, email, pw) 
           VALUES ( :uniqname, :email, :pw)";
 $stmt = $pdo->prepare($sql);
@@ -19,7 +26,7 @@ $stmt->execute(array(
     // ':id' => $_POST['id'],
     ':uniqname' => $_POST['uniqname'],
     ':email' => $_POST['email'],
-    ':pw' => $_POST['pw']));
+    ':pw' => sha1($_POST['pw'])));
 $_SESSION['success'] = 'Registration complete';
 header( 'Location: index.php' ) ;
 return;
