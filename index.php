@@ -15,9 +15,12 @@
         // }
         $uniqname = $_POST['uniqname'];
     // How to do something like where userinfo.uniqname == $uniqname?
-        $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo");
-    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ){  
-        if ($_POST['uniqname'] == $row['uniqname'] && sha1($_POST['pw']) == $row['pw']){
+        // $stmt = $pdo->query("SELECT user_id, uniqname, pw FROM userinfo");
+        $stmt = $pdo->prepare("SELECT user_id, uniqname, pw FROM userinfo WHERE uniqname = :uniqname");
+        // $stmt = $pdo->prepare("SELECT * FROM tracks where id = :xyz");
+$stmt->execute(array(":uniqname" => $uniqname));
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($_POST['uniqname'] == $row['uniqname'] && $_POST['pw'] == $row['pw']){
             $_SESSION['user_id'] = $row['user_id'];
             // echo $row['user_id'];
             $_SESSION['success'] = "you are logged in";
@@ -30,8 +33,10 @@
             $_SESSION['error'] = "Your uniqname or password is incorrect.";
             
         }
-    }
+
+    
     }  
+    clearstatcache()
 ?>
 <html>
 <head>

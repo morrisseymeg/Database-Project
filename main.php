@@ -1,12 +1,15 @@
 <?php
 require_once "pdo.php";
 session_start();
-include "dataConnect.php";
+
 // 
 ?>
 
 <html>
-  <head> Scheduler </head>
+  <head> Scheduler 
+  	<script type="text/javascript" src="jquery.min.js">
+		</script>
+	</head>
   <body>
 	<p>Your calendar</p>
     <table id="target">
@@ -24,7 +27,7 @@ include "dataConnect.php";
     		$c++;
     	}
       ?>
-      <tr> </tr>
+      <tr> 
       <td> </td>
       <td> Mo </td>
       <td> Tu </td>
@@ -33,11 +36,12 @@ include "dataConnect.php";
       <td> Fr </td>
       <td> Sa </td>
       <td> Su </td>
+      </tr>
       <?php
-      	$i = 0;
-		$j = 8;
-		$t = 0;
-    	$p = 0;
+      	$i = 0; // cell counter
+		$j = 8; // hour counter for time starting at 8am
+		$t = 0; // half hour increment for time
+    	$p = 0; // time period counter for first column
       	while ($i<216) {
       		if ($i%8==0){
       			echo "<tr>".PHP_EOL;
@@ -58,7 +62,7 @@ include "dataConnect.php";
       			$dayID = $i%8; // day id
       			$testing = floor($i/8) +1; //time period id #2
       			$avail = 0;
-      			echo "<td id='$i'>".$avail."</td>".PHP_EOL;
+      			echo "<td id='$i' day='$dayID'>".$avail."</td>".PHP_EOL;
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
       			}
@@ -68,9 +72,13 @@ include "dataConnect.php";
       	}
       ?>
     </table>
+
+
   </body>
 </html>
 
+<?php 
+include "dataConnect.php";
 
 
 
