@@ -61,7 +61,9 @@ session_start();
       			$dayID = $i%8; // day id
       			$testing = floor($i/8) +1; //time period id #2
       			$avail = 0;
-      			echo "<td id='$i' value='$dayID'>".$avail."</td>".PHP_EOL;
+
+      			echo "<td id='$i' value='$avail'>".$avail."</td>".PHP_EOL;
+
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
       			}

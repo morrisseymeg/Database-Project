@@ -1,19 +1,64 @@
 <script type="text/javascript">
+
+/* avail variables: 
+	avail
+	day_id
+	time_id
+	??user_id
+	cell_ID
+*/
+	wDay = [];
+	// for (var d = 0; d <= 6; d++) {
+	// 	wDay[d] = [];
+	// }
+	// console.log(wDay.length);
 	var table = $('#target');
-	var timePeriod = table.find('tr');
-		// alert(day);
-	// console.log('hey');
-	// console.log(timePeriod.length);
-	
-	// console.log(timePeriod[1]);
-	i = 1;
-	wDay = array(range(0:6));
-	console.log(wDay);
-	while (i<timePeriod.length){
-		console.log(timePeriod[i]);
-		i++;
+	var td = document.getElementsByTagName('td');
+	// var status = document.getElementById(cellID).value;
+	// var timePeriod = table.find('tr');
+	//td.length
+	console.log(td.length);
+	d = 0;
+	for (var c=1; c<td.length; c++){
+		cellID = Number(td[c].id);
+		// console.log(typeof(cellID));
+		dayID = cellID%8; // day id
+		timeID = Math.floor(cellID/8) +1; //time period id
+		
+		if ( !isNaN(dayID)  && dayID !="0" ){
+			status = document.getElementById(cellID).firstChild.data;
+			// array of objects to parse into php
+			wDay[d] = {
+				avail: Number(status),
+				day_id: dayID,
+				time_id: timeID,
+				cell_ID: cellID
+			}
+			d++;
+			
+		} 
+      	
+		
+		// tableData = timePeriod.getElementsByTagName('td');
+		// console.log(tableData);
 	}
+
+	console.log(wDay);
+	// dayID = timePeriod.find(value)
+	i = 1;
+	var json = JSON.stringify(wDay);
 	
+	// while (i<timePeriod.length){
+
+	// 	i++;
+	// }
+	// console.log('down here');
+	// console.log(wDay);
+	// console.log(timePeriod[i]);
+	// 	calibrate = i-1;
+	// 	console.log(wDay[calibrate]);
+	// 	wDay[calibrate].push(timePeriod[i]);
+	// 	console.log(wDay[calibrate]);
 
     // var table = $('#target');
     // 		var day = table.find('tr');
@@ -26,21 +71,39 @@
     	// 	window.console $$ console.log('table grabbed');
 
     	// }
-
+function postData()
+{
+    $.ajax({ type: "POST",
+             url: "AddtoDatabase.php",
+             data: wDay,//no need to call JSON.stringify etc... jQ does this for you
+             cache: false,
+             success: function(resopnse)
+             {//check response: it's always good to check server output when developing...
+                 console.log(response);
+                 alert('You will redirect in 10 seconds');
+                 setTimeout(function()
+                 {//just added timeout to give you some time to check console
+                    window.location = 'AddtoDatabase.php';
+                 },10000);
+             }
+    });
+postData();
 
 </script>
 
 <?php
+$dataArray = json_decode($json);
+var_dump($dataArray);
 // if ( isset($_POST['day'])) {
-     
 
-//   $sql = "INSERT INTO days (day, user_id) 
-//     VALUES (:day, :user_id)";
 
-//   $stmt = $pdo->prepare($sql);
-//   $stmt->execute(array(
-//     ':day' => $_POST['day'],
-//     ':user_id' => $_SESSION['user_id']));
+  // $sql = "INSERT INTO days (day, user_id) 
+  //   VALUES (:day, :user_id)";
+
+  // $stmt = $pdo->prepare($sql);
+  // $stmt->execute(array(
+  //   ':day' => $_POST['day'],
+  //   ':user_id' => $_SESSION['user_id']));
 //   // $_SESSION['success'] = 'logged in';
 //   // header( 'Location: index.php' ) ;
 //   // return;
