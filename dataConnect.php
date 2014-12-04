@@ -2,11 +2,13 @@
 	var table = $('#target');
 	var timePeriod = table.find('tr');
 		// alert(day);
-	console.log('hey');
-	console.log(timePeriod.length);
+	// console.log('hey');
+	// console.log(timePeriod.length);
 	
-	console.log(timePeriod[1]);
+	// console.log(timePeriod[1]);
 	i = 1;
+	wDay = array(range(0:6));
+	console.log(wDay);
 	while (i<timePeriod.length){
 		console.log(timePeriod[i]);
 		i++;
