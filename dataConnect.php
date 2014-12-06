@@ -7,7 +7,7 @@
 	??user_id
 	cell_ID
 */
-	wDay = [];
+	wDay = {};
 	// for (var d = 0; d <= 6; d++) {
 	// 	wDay[d] = [];
 	// }
@@ -45,8 +45,8 @@
 
 	console.log(wDay);
 	// dayID = timePeriod.find(value)
-	i = 1;
-	var json = JSON.stringify(wDay);
+	// i = 1;
+	// var json = JSON.stringify(wDay);
 	
 	// while (i<timePeriod.length){
 
@@ -81,10 +81,10 @@ function postData()
              {//check response: it's always good to check server output when developing...
                  console.log(response);
                  alert('You will redirect in 10 seconds');
-                 setTimeout(function()
-                 {//just added timeout to give you some time to check console
-                    window.location = 'AddtoDatabase.php';
-                 },10000);
+                 // setTimeout(function()
+                 // {//just added timeout to give you some time to check console
+                 //    window.location = 'AddtoDatabase.php';
+                 // },10000);
              }
     });
 postData();
@@ -92,10 +92,10 @@ postData();
 </script>
 
 <?php
-$dataArray = json_decode($json);
-var_dump($dataArray);
+// $dataArray = json_decode($json);
+// var_dump($dataArray);
 // if ( isset($_POST['day'])) {
-
+// $_POST['a']
 
   // $sql = "INSERT INTO days (day, user_id) 
   //   VALUES (:day, :user_id)";

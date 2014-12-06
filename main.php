@@ -1,9 +1,7 @@
 <?php
 require_once "pdo.php";
 session_start();
-
 ?>
-
 <html>
   <head> Scheduler 
   	<script type="text/javascript" src="jquery.min.js">
@@ -73,7 +71,9 @@ session_start();
       	}
       ?>
     </table>
-
+	<form>
+		<input type="submit" value="Click me" onclick="postData(); return false;" />
+	</form>
 
   </body>
 </html>
