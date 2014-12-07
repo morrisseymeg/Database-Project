@@ -43,7 +43,8 @@
 		// console.log(tableData);
 	}
 
-	console.log(wDay);
+	// console.log(wDay[180]);
+	// console.log(d);
 	// dayID = timePeriod.find(value)
 	// i = 1;
 	// var json = JSON.stringify(wDay);
@@ -76,8 +77,8 @@ function postData()
     $.ajax({ type: "POST",
              url: "AddtoDatabase.php",
              data: wDay,//no need to call JSON.stringify etc... jQ does this for you
-             cache: false,
-             success: function(resopnse)
+             
+             success: function(response)
              {//check response: it's always good to check server output when developing...
                  console.log(response);
                  alert('You will redirect in 10 seconds');
@@ -121,3 +122,5 @@ postData();
 //     echo '<p style="color:red">'.$_SESSION['error']."</p>\n";
 //     unset($_SESSION['error']);
 // }
+// -->
+?>

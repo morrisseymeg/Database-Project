@@ -46,10 +46,10 @@ session_start();
 				$p++;
         		
 				if ($t%2==0) {
-					echo "<td id='time_$p'>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
+					echo "<td class='clickable' id='time_$p'>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
 					$j++;
 				} else {
-				  echo "<td id='time_$p'>"."$j:00- $j:30 \n"."</td>".PHP_EOL;
+				  echo "<td class='clickable' id='time_$p'>"."$j:00- $j:30 \n"."</td>".PHP_EOL;
 				}
 				$t++;
       			
@@ -69,7 +69,9 @@ session_start();
         }
       		$i++;
       	}
+
       ?>
+   
     </table>
 	<form>
 		<input type="submit" value="Click me" onclick="postData(); return false;" />
@@ -78,8 +80,8 @@ session_start();
   </body>
 </html>
 
-<?php 
-include "dataConnect.php";
+
+
 
 
 
