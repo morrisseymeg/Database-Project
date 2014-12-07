@@ -71,7 +71,7 @@ session_start();
       	}
 
       ?>
-   
+      <?php include "dataConnect.php"; ?>
     </table>
 	<form>
 		<input type="submit" value="Click me" onclick="postData(); return false;" />

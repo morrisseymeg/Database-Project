@@ -40,9 +40,9 @@
       	
 		
 		// tableData = timePeriod.getElementsByTagName('td');
-		// console.log(tableData);
+		
 	}
-
+	// console.log(wDay);
 	// console.log(wDay[180]);
 	// console.log(d);
 	// dayID = timePeriod.find(value)
@@ -81,13 +81,14 @@ function postData()
              success: function(response)
              {//check response: it's always good to check server output when developing...
                  console.log(response);
-                 alert('You will redirect in 10 seconds');
+                 // alert('You will redirect in 10 seconds');
                  // setTimeout(function()
                  // {//just added timeout to give you some time to check console
                  //    window.location = 'AddtoDatabase.php';
                  // },10000);
              }
     });
+}
 postData();
 
 </script>
