@@ -89,7 +89,7 @@ function postData()
              }
     });
 }
-postData();
+
 
 </script>
 
