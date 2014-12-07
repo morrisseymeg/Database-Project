@@ -76,7 +76,7 @@ session_start();
 	<form>
 		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
 	</form>
-
+<a href="logout.php">Logout</a>
   </body>
 </html>
 
