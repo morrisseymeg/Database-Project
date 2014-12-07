@@ -44,7 +44,7 @@
 	}
 	// console.log(wDay);
 	// console.log(wDay[180]);
-	// console.log(d);
+	console.log(d);
 	// dayID = timePeriod.find(value)
 	// i = 1;
 	// var json = JSON.stringify(wDay);
@@ -80,7 +80,7 @@ function postData()
              
              success: function(response)
              {//check response: it's always good to check server output when developing...
-                 console.log(response);
+                 console.log("sending data .."+response);
                  // alert('You will redirect in 10 seconds');
                  // setTimeout(function()
                  // {//just added timeout to give you some time to check console
