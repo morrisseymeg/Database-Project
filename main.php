@@ -1,6 +1,7 @@
 <?php
 require_once "pdo.php";
 session_start();
+// echo $user_ID = $_SESSION['user_id'];
 ?>
 <html>
   <head> Scheduler 
@@ -61,7 +62,9 @@ session_start();
       			$testing = floor($i/8) +1; //time period id #2
       			$avail = 0;
 
-      			echo "<td id='$i' class='clickable' value='$avail' onclick=''>".$avail."</td>".PHP_EOL;
+
+      			echo "<td id='$i' class='clickable' value='$avail'>".$avail."</td>".PHP_EOL;
+
 
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
@@ -86,7 +89,7 @@ session_start();
     </table>
 	<form>
 		
-		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
+		<p><input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" /></p>
 	</form>
 <a href="logout.php">Logout</a>
   </body>

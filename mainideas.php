@@ -92,7 +92,7 @@ session_start();
       <?php include "dataConnect.php"; ?>
     </table>
 		
-		<input type="submit" value="Update My Schedule!!!!" />
+		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
 	</form>
 <a href="logout.php">Logout</a>
   </body>

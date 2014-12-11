@@ -1,23 +1,28 @@
-<script type="text/javascript">
+<?php
+	// require_once "pdo.php";
+	// session_start();
+	echo "data connect user_ID: " . $_SESSION['user_id'];
+	$user_ID = $_SESSION['user_id'];
+	// echo $user_ID;
+	
+echo("<script type='text/javascript'>
+	var userID = ". $user_ID .
+	"; </script>");
 
-/* avail variables: 
-	avail
-	day_id
-	time_id
-	??user_id
-	cell_ID
-*/
+?>
+<script type='text/javascript'>
 	wDay = {};
 	// for (var d = 0; d <= 6; d++) {
 	// 	wDay[d] = [];
 	// }
 	// console.log(wDay.length);
+	console.log("hello user "+userID);
 	var table = $('#target');
 	var td = document.getElementsByTagName('td');
 	// var status = document.getElementById(cellID).value;
 	// var timePeriod = table.find('tr');
 	//td.length
-	console.log(td.length);
+	console.log("so many td's: "+td.length);
 	d = 0;
 	for (var c=1; c<td.length; c++){
 		cellID = Number(td[c].id);
@@ -32,9 +37,11 @@
 				avail: Number(status),
 				day_id: dayID,
 				time_id: timeID,
-				cell_ID: cellID
+				cell_ID: cellID,
+				user_id: userID,
 			}
 			d++;
+			
 			
 		} 
       	
@@ -42,9 +49,9 @@
 		// tableData = timePeriod.getElementsByTagName('td');
 		
 	}
-	// console.log(wDay);
+	console.log(wDay);
 	// console.log(wDay[180]);
-	console.log(d);
+	// console.log(d);
 	// dayID = timePeriod.find(value)
 	// i = 1;
 	// var json = JSON.stringify(wDay);
