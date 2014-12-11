@@ -14,7 +14,7 @@
 		    echo "type of avail after:" . gettype($data['avail'])."\n";
 		    echo "\n"."availability: " . $data['avail']."\n";
 			$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
-		        VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)";
+		        VALUES (:day_id, :$avail, :time_id, :user_id, :cell_ID)";
 		    $stmt = $pdo->prepare($sql);
 		    
 		        $stmt->execute(array(

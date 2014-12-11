@@ -79,21 +79,12 @@ session_start();
       	}
 
       ?>
-		<script type="text/javascript">
-		console.log('Hello');
-		/* the .toggle function is not working properly but at least it's doing something!  */
-	/*$(".clickable").click( function () {
-	$( this ).toggle();
-	})	; */
-
-
-
-</script>
-      <?php include "dataConnect.php"; ?>
     </table>
 		
-		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
+		<input type="button" value="Update My Schedule!!!!" onclick="self.location='dataconnect.php'; postData(); return false;" />
+  <?php //include "dataConnect.php"; ?>
 	</form>
+if statement?
 <a href="logout.php">Logout</a>
   </body>
 </html>
