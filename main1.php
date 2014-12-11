@@ -1,10 +1,10 @@
 <?php
 require_once "pdo.php";
 session_start();
-if (isset($_POST['hidden29'])){
-	echo $_POST['hidden29'];
-	// header('Location: mainideas.php');
-	// return;
+if (isset($_POST['hidden215'])){
+	// echo $_POST['hidden215'];
+	header('Location: mainideas.php');
+	return;
 }
 
 ?>
@@ -48,8 +48,7 @@ if (isset($_POST['hidden29'])){
 		$j = 8; // hour counter for time starting at 8am
 		$t = 0; // half hour increment for time
     	$p = 0; // time period counter for first column
-		
-		// ----------------------------------------------------
+
       	while ($i<216) {
       		if ($i%8==0){
       			echo "<tr>".PHP_EOL;
@@ -77,7 +76,7 @@ if (isset($_POST['hidden29'])){
 				$stmt->execute(array(
 					':user_id' => $user_ID
 					));
-				// ----------------------------------------------------
+
       			if($stmt->rowCount() == 0){
       				$avail = 0;
       			}else{
@@ -85,7 +84,8 @@ if (isset($_POST['hidden29'])){
       				$avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
       			}
       			}
-				// ----------------------------------------------------
+      	
+
 
 
 
@@ -99,11 +99,9 @@ if (isset($_POST['hidden29'])){
       		$i++;
 			
       	}
-      	// ----------------------------------------------------
       ?>
 		<script type="text/javascript">
 		console.log('Hello');
-
 		function changeAvail(el){
 			cellID = $(el).attr("id");
 			hiddenID = "hidden".concat(cellID);
