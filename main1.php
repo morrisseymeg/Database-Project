@@ -1,7 +1,12 @@
 <?php
 require_once "pdo.php";
 session_start();
-// echo $user_ID = $_SESSION['user_id'];
+if (isset($_POST['hidden215'])){
+	// echo $_POST['hidden215'];
+	header('Location: mainideas.php');
+	return;
+}
+
 ?>
 <html>
   <head> Scheduler 
@@ -10,10 +15,12 @@ session_start();
 	</head>
   <body>
 	<p class='funf'>Your calendar</p>
-	<form>
+	<form method="post" name="calendar" action="">
     <table id="target">
     <?php
+    	
     	$c = 0;
+
     	while ($c<9){
     		if ($c%2 == 0){
     			echo "
@@ -61,53 +68,69 @@ session_start();
       			$timeID = $p; // time period id #1
       			$dayID = $i%8; // day id
       			$testing = floor($i/8) +1; //time period id #2
-      			$avail = 0;
+      			$callID = "hidden".$i;
+
+				$user_ID = $_SESSION['user_id'];
+				$stmt = $pdo->prepare("SELECT * from avail where user_id = ':user_id'");
+						// $stmt->bindParam(":user_id", "bob");
+				$stmt->execute(array(
+					':user_id' => $user_ID
+					));
+
+      			if($stmt->rowCount() == 0){
+      				$avail = 0;
+      			}else{
+      				if (isset($_POST[$callID])){
+      				$avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
+      			}
+      			}
+      	
 
 
-      			echo "<td id='$i' class='clickable' value=$avail onclick='changeAvail(this)'>".$avail."</td>".PHP_EOL;
-// 
 
+
+				echo "<input id='hidden$i' type='hidden' name='hidden$i' value='$avail'/><td id='$i' name='$i' class='clickable'  onclick='changeAvail(this)'>$avail</td>".PHP_EOL;
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
-      			}
-      			
-        }
+      			}	
+				
+			}
+		
       		$i++;
+			
       	}
-
       ?>
-      </form>
 		<script type="text/javascript">
 		console.log('Hello');
 		function changeAvail(el){
-			// alert(el);
-			// console.log(el.value);
 			cellID = $(el).attr("id");
-			avail = ($(el).attr("value") + 1)%2;
-			console.log('avail before click: ', $(el).attr("value"),'\n');
+			hiddenID = "hidden".concat(cellID);
+			console.log("hiddenID before click: ", hiddenID);
+			console.log("value: ",document.getElementById(hiddenID).value);
+			avail = document.getElementById(hiddenID).value
+			if (avail==0){
+				avail = 1;
+			} else{
+				avail = 0;
+			}
 			console.log('avail after click: ', avail,'\n');
-			console.log(document.getElementById(cellID).innerHTML);
 			document.getElementById(cellID).innerHTML = avail;
-			// $(el).attr("value") = avail;
-			// alert(avail);
-			// alert($(el).attr("id"));
+			document.getElementById(hiddenID).value = avail;
+			console.log('hiddenID value after click: ',document.getElementById(hiddenID).value);
 		}
-		/* the .toggle function is not working properly but at least it's doing something!  */
-	// $(".clickable").click( function () {
-	// $( this ).toggle();
-	// })	;
-
-
-
-</script>
-      <?php include "dataConnect.php"; ?>
-    </table>
-	<form>
 		
-		<p><input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" /></p>
-	</form>
-<a href="logout.php">Logout</a>
 
+		function testing(){
+			alert("it is sending data..");
+		}
+</script>
+      <?php include "dataProcess.php"; ?>
+    </table>
+		
+		<input type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
+	</form>
+
+<a href="logout.php">Logout</a>
   </body>
 </html>
 
