@@ -12,7 +12,7 @@
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['success'] = "you are logged in";
                     unset($_SESSION["error"]);
-                    header('Location: main.php');
+                    header('Location: mainideas.php');
                     
                 }
                 else{
