@@ -1,6 +1,10 @@
 <?php
 require_once "pdo.php";
 session_start();
+// if (isset($_POST['hidden215'])){
+// 	echo $_POST['hidden215'];
+// }
+
 ?>
 <html>
   <head> Scheduler 
@@ -9,10 +13,12 @@ session_start();
 	</head>
   <body>
 	<p class='funf'>Your calendar</p>
-	<form method="post" action="">
+	<form method="post" name="calendar" action="">
     <table id="target">
     <?php
+    	
     	$c = 0;
+
     	while ($c<9){
     		if ($c%2 == 0){
     			echo "
@@ -60,14 +66,9 @@ session_start();
       			$timeID = $p; // time period id #1
       			$dayID = $i%8; // day id
       			$testing = floor($i/8) +1; //time period id #2
-      			$avail = 0;
-				
-			if ($avail == 1) {
-			echo "<td id='$i' class='clickable' value='$avail' onclick=''><input name='$i' type='checkbox' checked='checked'></td>".PHP_EOL;
-			}
-			else {
-      			echo "<td id='$i' class='clickable' value='$avail' onclick=''><input name='$i' type='checkbox'></td>".PHP_EOL;
-				}
+      			$callID = "hidden".$i;
+      			$avail = $_POST[$callID];
+				echo "<input id='hidden$i' type='hidden' name='hidden$i' value='$avail'/><td id='$i' name='$i' class='clickable'  onclick='changeAvail(this)'>$avail</td>".PHP_EOL;
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
       			}	
@@ -77,22 +78,34 @@ session_start();
       		$i++;
 			
       	}
-
+echo $_POST['hidden215'];
       ?>
 		<script type="text/javascript">
 		console.log('Hello');
-		/* the .toggle function is not working properly but at least it's doing something!  */
-	/*$(".clickable").click( function () {
-	$( this ).toggle();
-	})	; */
-
+		function changeAvail(el){
+			cellID = $(el).attr("id");
+			hiddenID = "hidden".concat(cellID);
+			console.log("hiddenID before click: ", hiddenID);
+			console.log("value: ",document.getElementById(hiddenID).value);
+			avail = document.getElementById(hiddenID).value
+			if (avail==0){
+				avail = 1;
+			} else{
+				avail = 0;
+			}
+			console.log('avail after click: ', avail,'\n');
+			document.getElementById(cellID).innerHTML = avail;
+			document.getElementById(hiddenID).value = avail;
+			console.log('hiddenID value after click: ',document.getElementById(hiddenID).value);
+		}
+		
 
 
 </script>
       <?php include "dataConnect.php"; ?>
     </table>
 		
-		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
+		<input type="submit" value="Update My Schedule!!!!" />
 	</form>
 <a href="logout.php">Logout</a>
   </body>

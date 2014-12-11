@@ -22,7 +22,7 @@ echo("<script type='text/javascript'>
 	// var status = document.getElementById(cellID).value;
 	// var timePeriod = table.find('tr');
 	//td.length
-	console.log("so many td's: "+td.length);
+	// console.log("so many td's: "+td.length);
 	d = 0;
 	for (var c=1; c<td.length; c++){
 		cellID = Number(td[c].id);
@@ -32,6 +32,7 @@ echo("<script type='text/javascript'>
 		
 		if ( !isNaN(dayID)  && dayID !="0" ){
 			status = document.getElementById(cellID).firstChild.data;
+			console.log("status: ",status);
 			// array of objects to parse into php
 			wDay[d] = {
 				avail: Number(status),
@@ -49,7 +50,7 @@ echo("<script type='text/javascript'>
 		// tableData = timePeriod.getElementsByTagName('td');
 		
 	}
-	console.log(wDay);
+	// console.log(wDay);
 	// console.log(wDay[180]);
 	// console.log(d);
 	// dayID = timePeriod.find(value)

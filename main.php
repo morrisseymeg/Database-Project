@@ -10,6 +10,7 @@ session_start();
 	</head>
   <body>
 	<p class='funf'>Your calendar</p>
+	<form>
     <table id="target">
     <?php
     	$c = 0;
@@ -63,8 +64,8 @@ session_start();
       			$avail = 0;
 
 
-      			echo "<td id='$i' class='clickable' value='$avail'>".$avail."</td>".PHP_EOL;
-
+      			echo "<td id='$i' class='clickable' value=$avail onclick='changeAvail(this)'>".$avail."</td>".PHP_EOL;
+// 
 
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
@@ -75,12 +76,26 @@ session_start();
       	}
 
       ?>
+      </form>
 		<script type="text/javascript">
 		console.log('Hello');
+		function changeAvail(el){
+			// alert(el);
+			// console.log(el.value);
+			cellID = $(el).attr("id");
+			avail = ($(el).attr("value") + 1)%2;
+			console.log('avail before click: ', $(el).attr("value"),'\n');
+			console.log('avail after click: ', avail,'\n');
+			console.log(document.getElementById(cellID).innerHTML);
+			document.getElementById(cellID).innerHTML = avail;
+			// $(el).attr("value") = avail;
+			// alert(avail);
+			// alert($(el).attr("id"));
+		}
 		/* the .toggle function is not working properly but at least it's doing something!  */
-	$(".clickable").click( function () {
-	$( this ).toggle();
-	})	;
+	// $(".clickable").click( function () {
+	// $( this ).toggle();
+	// })	;
 
 
 
@@ -92,6 +107,7 @@ session_start();
 		<p><input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" /></p>
 	</form>
 <a href="logout.php">Logout</a>
+
   </body>
 </html>
 
