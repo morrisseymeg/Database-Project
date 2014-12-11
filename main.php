@@ -8,7 +8,7 @@ session_start();
 		</script>
 	</head>
   <body>
-	<p>Your calendar</p>
+	<p class='funf'>Your calendar</p>
     <table id="target">
     <?php
     	$c = 0;
@@ -39,6 +39,7 @@ session_start();
 		$j = 8; // hour counter for time starting at 8am
 		$t = 0; // half hour increment for time
     	$p = 0; // time period counter for first column
+
       	while ($i<216) {
       		if ($i%8==0){
       			echo "<tr>".PHP_EOL;
@@ -46,10 +47,10 @@ session_start();
 				$p++;
         		
 				if ($t%2==0) {
-					echo "<td class='clickable' id='time_$p'>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
+					echo "<td id='time_$p'>"."$j:30 - $j1:00 \n"."</td>".PHP_EOL;
 					$j++;
 				} else {
-				  echo "<td class='clickable' id='time_$p'>"."$j:00- $j:30 \n"."</td>".PHP_EOL;
+				  echo "<td id='time_$p'>"."$j:00- $j:30 \n"."</td>".PHP_EOL;
 				}
 				$t++;
       			
@@ -60,7 +61,7 @@ session_start();
       			$testing = floor($i/8) +1; //time period id #2
       			$avail = 0;
 
-      			echo "<td id='$i' value='$avail'>".$avail."</td>".PHP_EOL;
+      			echo "<td id='$i' class='clickable' value='$avail' onclick=''>".$avail."</td>".PHP_EOL;
 
       			if ($i%8==7){
       				echo "</tr>".PHP_EOL;
@@ -71,9 +72,20 @@ session_start();
       	}
 
       ?>
+		<script type="text/javascript">
+		console.log('Hello');
+		/* the .toggle function is not working properly but at least it's doing something!  */
+	$(".clickable").click( function () {
+	$( this ).toggle();
+	})	;
+
+
+
+</script>
       <?php include "dataConnect.php"; ?>
     </table>
 	<form>
+		
 		<input type="submit" value="Update My Schedule!!!!" onclick="postData(); return false;" />
 	</form>
 <a href="logout.php">Logout</a>
