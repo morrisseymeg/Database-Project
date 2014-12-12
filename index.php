@@ -15,7 +15,11 @@
                     header('Location: mainideas.php');
                     
                 }
-                else{
+                elseif($row['user_id']===NULL){
+                    $_SESSION['error'] = "It seems like you don't have an account yet, would you like to register?";
+                }
+                else
+                { 
                     $_SESSION['error'] = "Your uniqname or password is incorrect.";
                     
                 }

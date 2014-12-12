@@ -1,11 +1,12 @@
 <?php
 require_once "pdo.php";
 session_start();
-if (isset($_POST['hidden29'])){
-	echo $_POST['hidden29'];
-	// header('Location: mainideas.php');
+if (isset($_POST['hidden1'])){
+	// echo $_POST['hidden1'];
+	header('Location: mainideas.php');
 	// return;
 }
+	$user_ID = $_SESSION['user_id'];
 
 ?>
 <html>
@@ -15,7 +16,7 @@ if (isset($_POST['hidden29'])){
 	</head>
   <body>
 	<p class='funf'>Your calendar</p>
-	<form method="post" name="calendar" action="">
+	<form method="post" name="calendar" id="form" action="">
     <table id="target">
     <?php
     	
@@ -71,8 +72,8 @@ if (isset($_POST['hidden29'])){
       			$testing = floor($i/8) +1; //time period id #2
       			$callID = "hidden".$i;
 
-				$user_ID = $_SESSION['user_id'];
-				$stmt = $pdo->prepare("SELECT * from avail where user_id = ':user_id'");
+				// $user_ID = $_SESSION['user_id'];
+				$stmt = $pdo->prepare("SELECT * from avail where user_id = :user_id");
 						// $stmt->bindParam(":user_id", "bob");
 				$stmt->execute(array(
 					':user_id' => $user_ID
@@ -81,9 +82,23 @@ if (isset($_POST['hidden29'])){
       			if($stmt->rowCount() == 0){
       				$avail = 0;
       			}else{
-      				if (isset($_POST[$callID])){
-      				$avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
-      			}
+      				$stmt = $pdo->prepare("SELECT avail from avail where user_id = :user_id AND day_id = :day_id
+				        AND time_id = :time_id");
+						
+					$stmt->execute(array(
+					
+						':day_id' => $dayID,
+			        	':time_id' => $timeID,
+			        	// ':avail'=> $_POST[$callID],
+			        	':user_id'=> $user_ID,
+					));
+					$row = $stmt->fetch(PDO::FETCH_ASSOC);
+					$avail = $row['avail'];
+					// echo 'there is something here, and avail is: '.$avail;
+      			// 	if (isset($_POST[$callID])){
+      			// 	// $avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
+      			// 		$avail = 1;
+      			// }
       			}
 				// ----------------------------------------------------
 
@@ -101,6 +116,8 @@ if (isset($_POST['hidden29'])){
       	}
       	// ----------------------------------------------------
       ?>
+      <div id="dummy">
+      </div>
 		<script type="text/javascript">
 		console.log('Hello');
 
@@ -123,11 +140,11 @@ if (isset($_POST['hidden29'])){
 		
 
 		function testing(){
-			alert("it is sending data..");
+			// alert("it is sending data..");
+			$('#dummy').load("dataProcess.php");
 		}
 </script>
-      <?php include "dataProcess.php"; ?>
-    </table>
+         </table>
 		
 		<input type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>

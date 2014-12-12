@@ -2,7 +2,7 @@
 require_once "pdo.php";
 session_start();
 if (isset($_POST['hidden215'])){
-	// echo $_POST['hidden215'];
+	echo $_POST['hidden215'];
 	header('Location: mainideas.php');
 	return;
 }
@@ -14,7 +14,7 @@ if (isset($_POST['hidden215'])){
 		</script>
 	</head>
   <body>
-	<p class='funf'>Your calendar</p>
+	<p>Your calendar</p>
 	<form method="post" name="calendar" action="">
     <table id="target">
     <?php
