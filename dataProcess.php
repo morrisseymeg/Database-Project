@@ -1,6 +1,16 @@
 <?php
-	
+	require_once "pdo.php";
+	session_start();
 	$user_ID = intval($_SESSION['user_id']);
+	$_SESSION['user_id'] = $user_ID;
+	// var_dump($_POST[1]);
+	
+	// $inData = $_POST[1];
+	// $data = json_encode($inData,true);
+	// var_dump($data);
+	// echo "$data['user_id']: ".$data["user_id"];
+	// $user_ID = $inData["user_id"];
+	// echo
 	echo "dataprocess user id: ".$user_ID.'   '."</br>";
 	echo "type of user_ID: ".gettype($user_ID).'   '."</br>";
 	// $sql = "SELECT * from avail where user_id = :user_id";
@@ -12,10 +22,22 @@
 	$row = $stmt->fetch(PDO::FETCH_ASSOC);
 	echo "row count: ". $stmt->rowCount().'   '."</br>";
 	// if ( $row !== false ) {
-	echo("<script type='text/javascript'>
-	var userID = ". $user_ID .
-	"; </script>");
-	// echo "$avail = <script type='text/javascript'>document.getElementById(hiddenID).value </script>;";
+	// echo("<script type='text/javascript'>
+	// var userID = ". $user_ID .
+	// "; </script>");
+	// // echo "$avail = <script type='text/javascript'>document.getElementById(hiddenID).value </script>;";
+
+//############# trying ajex again...
+
+
+
+
+
+
+
+//#############	
+
+
 
 	if($stmt->rowCount() > 0){
 		echo "there is something".'   '."</br>";
@@ -23,7 +45,7 @@
 		$count = 0;
 		while ($count<216){
 			$callID = "hidden".$count;
-				echo $callID;
+				// echo $callID.;
 			$dayID = $count%8; // day id
 			if ($dayID != 0){
 			$timeID = floor($count/8) +1; //time period id
@@ -36,7 +58,7 @@
 				    	$stmt->execute(array(
 					        	':day_id' => $dayID,
 					        	':time_id' => $timeID,
-					        	':avail'=> $_POST[$callID],
+					        	':avail'=> $_POST[$count]['avail'],
 					        	':user_id'=> $user_ID,
 					        	// ':cell_ID'=> $count,
 					        ));
@@ -53,20 +75,22 @@
 		if (isset($_POST[$callID])){
 			// echo $callID;
 			$dayID = $count%8; // day id
-			$timeID = floor($count/8) +1; //time period id
-			
-  			$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
-		        VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)
-		        ";
-		    $stmt = $pdo->prepare($sql);
-		    
-		        $stmt->execute(array(
-		        	':day_id' => $dayID,
-		        	':time_id' => $timeID,
-		        	':avail'=> $_POST[$callID],
-		        	':user_id'=> $user_ID,
-		        	':cell_ID'=> $count,
-		        ));
+			if ($dayID != 0){
+				$timeID = floor($count/8) +1; //time period id
+				
+	  			$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
+			        VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)
+			        ";
+			    $stmt = $pdo->prepare($sql);
+			    
+			        $stmt->execute(array(
+			        	':day_id' => $dayID,
+			        	':time_id' => $timeID,
+			        	':avail'=> $_POST[$count],
+			        	':user_id'=> $user_ID,
+			        	':cell_ID'=> $count,
+			        ));
+		    }
 		}
 		$count++;
 					}

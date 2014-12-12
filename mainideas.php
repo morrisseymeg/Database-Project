@@ -1,11 +1,11 @@
 <?php
 require_once "pdo.php";
 session_start();
-if (isset($_POST['hidden1'])){
-	// echo $_POST['hidden1'];
-	header('Location: mainideas.php');
-	// return;
-}
+// if (isset($_POST['hidden1'])){
+// 	// echo $_POST['hidden1'];
+// 	// header('Location: mainideas.php');
+// 	// return;
+// }
 	$user_ID = $_SESSION['user_id'];
 
 ?>
@@ -82,6 +82,7 @@ if (isset($_POST['hidden1'])){
       			if($stmt->rowCount() == 0){
       				$avail = 0;
       			}else{
+      				// getting avail out from the database..
       				$stmt = $pdo->prepare("SELECT avail from avail where user_id = :user_id AND day_id = :day_id
 				        AND time_id = :time_id");
 						
@@ -99,6 +100,8 @@ if (isset($_POST['hidden1'])){
       			// 	// $avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
       			// 		$avail = 1;
       			// }
+
+
       			}
 				// ----------------------------------------------------
 
@@ -115,6 +118,9 @@ if (isset($_POST['hidden1'])){
 			
       	}
       	// ----------------------------------------------------
+      echo("<script type='text/javascript'>
+	var userID = ". $user_ID .
+	"; </script>");
       ?>
 
       <div id="dummy">
@@ -122,6 +128,7 @@ if (isset($_POST['hidden1'])){
 
 		<script type="text/javascript">
 		console.log('Hello');
+
 
 		function changeAvail(el){
 			cellID = $(el).attr("id");
@@ -140,18 +147,78 @@ if (isset($_POST['hidden1'])){
 			console.log('hiddenID value after click: ',document.getElementById(hiddenID).value);
 		}
 		
+//############################## trying ajex again...
+					// $availDATA = {};
 
 		function testing(){
-			// alert("it is sending data..");
-			$('#dummy').load("dataProcess.php");
-		}
+			wDay={};
+			alert("it is sending data..");
+			// $('#dummy').load("dataProcess.php");
+			// d = 0;
+			for (var c=1; c<216; c++){
+				// console.log("in testing for loop");
+
+				// cellID = Number(td[c].id);
+				// console.log("um???");
+				dayID = c%8; // day id
+				// timeID = Math.floor(cellID/8) +1; //time period id
+				// console.log("in testing for loop");
+				if ( dayID != 0 ){
+					status = document.getElementById(c).innerHTML;
+
+					console.log("status: ",status);
+					// array of objects to parse into php
+					wDay[c] = {
+						avail: Number(status),
+						user_id: userID
+					}
+					// d++;
+					
+					
+				} // end of if
+				} // end of for loop
+				// postData();
+				console.log("wDay:",wDay[1]);
+				console.log("trying to send!!!");
+    		$.ajax({ type: "POST",
+             url: "dataProcess.php",
+             data: wDay,
+             success: function(response)
+             {//check response: it's always good to check server output when developing...
+                 console.log("sending data .."+response);
+                 
+             }
+         }); // end of ajax
+			} // end of function testing()
+		function postData(){
+			console.log("trying to send!!!");
+    		$.ajax({ type: "POST",
+             url: "dataProcess.php",
+             data: wDay,
+             dataType: 'json',
+             success: function(response)
+             {//check response: it's always good to check server output when developing...
+                 console.log("sending data .."+response);
+                 // alert('You will redirect in 10 seconds');
+                 // setTimeout(function()
+                 // {//just added timeout to give you some time to check console
+                 //    window.location = 'AddtoDatabase.php';
+                 // },10000);
+             }
+    });
+} // end of function postData()
+
+
+
+//##############################
 </script>
-         </table>
+        
+        </table>
 		
 		<input type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>
 
->>>>>>> origin/master
+
 <a href="logout.php">Logout</a>
   </body>
 </html>
