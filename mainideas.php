@@ -116,8 +116,10 @@ if (isset($_POST['hidden1'])){
       	}
       	// ----------------------------------------------------
       ?>
+
       <div id="dummy">
       </div>
+
 		<script type="text/javascript">
 		console.log('Hello');
 
@@ -149,6 +151,7 @@ if (isset($_POST['hidden1'])){
 		<input type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>
 
+>>>>>>> origin/master
 <a href="logout.php">Logout</a>
   </body>
 </html>
