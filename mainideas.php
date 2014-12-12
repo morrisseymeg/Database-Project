@@ -7,6 +7,8 @@ session_start();
 // 	// return;
 // }
 	$user_ID = $_SESSION['user_id'];
+	$uniqname = $_SESSION['uniqname'];
+	echo "You are logged in as: ".$uniqname."</br>";
 
 ?>
 <html>
@@ -90,18 +92,12 @@ session_start();
 					
 						':day_id' => $dayID,
 			        	':time_id' => $timeID,
-			        	// ':avail'=> $_POST[$callID],
+			        	
 			        	':user_id'=> $user_ID,
 					));
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
 					$avail = $row['avail'];
-					// echo 'there is something here, and avail is: '.$avail;
-      			// 	if (isset($_POST[$callID])){
-      			// 	// $avail = $_POST[$callID];// FIX NEEDED: need to get from the database!!!!!!!!!!!!!!!!!!!!!! 
-      			// 		$avail = 1;
-      			// }
-
-
+					
       			}
 				// ----------------------------------------------------
 
@@ -152,7 +148,7 @@ session_start();
 
 		function testing(){
 			wDay={};
-			alert("it is sending data..");
+			alert("Your availability is being sent..");
 			// $('#dummy').load("dataProcess.php");
 			// d = 0;
 			for (var c=1; c<216; c++){
@@ -190,23 +186,23 @@ session_start();
              }
          }); // end of ajax
 			} // end of function testing()
-		function postData(){
-			console.log("trying to send!!!");
-    		$.ajax({ type: "POST",
-             url: "dataProcess.php",
-             data: wDay,
-             dataType: 'json',
-             success: function(response)
-             {//check response: it's always good to check server output when developing...
-                 console.log("sending data .."+response);
-                 // alert('You will redirect in 10 seconds');
-                 // setTimeout(function()
-                 // {//just added timeout to give you some time to check console
-                 //    window.location = 'AddtoDatabase.php';
-                 // },10000);
-             }
-    });
-} // end of function postData()
+// 		function postData(){
+// 			console.log("trying to send!!!");
+//     		$.ajax({ type: "POST",
+//              url: "dataProcess.php",
+//              data: wDay,
+//              dataType: 'json',
+//              success: function(response)
+//              {//check response: it's always good to check server output when developing...
+//                  console.log("sending data .."+response);
+//                  // alert('You will redirect in 10 seconds');
+//                  // setTimeout(function()
+//                  // {//just added timeout to give you some time to check console
+//                  //    window.location = 'AddtoDatabase.php';
+//                  // },10000);
+//              }
+//     });
+// } // end of function postData()
 
 
 

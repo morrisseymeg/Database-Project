@@ -4,11 +4,14 @@
     if ( isset($_POST["uniqname"]) && isset($_POST["pw"]) ) {
         
         $uniqname = $_POST['uniqname'];
+        $_SESSION['uniqname'] = $uniqname;
         $stmt = $pdo->prepare("SELECT user_id, uniqname, pw FROM userinfo WHERE uniqname = :uniqname");
         
         $stmt->execute(array(":uniqname" => $uniqname));
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // $_SESSION['uniqname'] = $row['uniqname'];
         if ($_POST['uniqname'] == $row['uniqname'] && sha1($_POST['pw']) == $row['pw']){
+
                     $_SESSION['user_id'] = $row['user_id'];
                     $_SESSION['success'] = "you are logged in";
                     unset($_SESSION["error"]);
