@@ -1,16 +1,13 @@
 <?php
 session_start();
+session_destroy(); 
+header("Location: index.php");
 ?>
 <!DOCTYPE html>
 <html>
 <body>
 
-<?php
-// destroy the session 
-session_destroy(); 
-header("Location: index.php");
-exit();
-?>
+
 
 </body>
 </html>
