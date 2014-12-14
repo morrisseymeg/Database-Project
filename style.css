@@ -1,11 +1,11 @@
 body {
-    background-color: #cfc096 ;
+    background-color: #ffffff ;
     margin: 1px;
     padding: 3px;
     font-size: 30px;
 	font-family: Verdana, sans-serif;
-	color: 002a5b;
-	display: inline;
+	color: #002a5b;
+	text-align: center;
 }
 
 a {
@@ -31,19 +31,34 @@ a:hover {
 
 h1 {
 	display: block;
-	text-align: center;
 }
 h2 {
 	text-decoration: bold;
 	text-decoration: underline;
 	font-size: 2em;
-	text-align: center;
 }
-.btn {
+div {
 	float: left;
-	margin: 5px;
+	border: 5px double #7a121c;
+	background-color: #cfc096;
 }
-.formstyle {
+#mutton {
+	margin: 5px; 
+}
+form {
     display: inline-block;
-	text-align: center;
 	}
+#target {
+	padding: 2%;
+	border: 5px solid #002a5b;
+	background-color: #cfc096;
+}
+
+tr {
+	border: 3px solid #002a5b;
+}
+
+td {
+	text-align: center;
+	padding: .5%;
+}

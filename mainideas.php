@@ -6,9 +6,10 @@ session_start();
 // 	// header('Location: mainideas.php');
 // 	// return;
 // }
+
 	$user_ID = $_SESSION['user_id'];
 	$uniqname = $_SESSION['uniqname'];
-	echo "You are logged in as: ".$uniqname."</br>";
+	echo "<div>You are logged in as: ".$uniqname."</div></br>";
 	
 
 ?>
@@ -17,6 +18,7 @@ session_start();
 		include("head.html");
 	?>
   <body>
+	</br>
 	<p class='funf'>Your calendar</p>
 	<form method="post" name="calendar" id="form" action="">
     <table id="target">
@@ -119,8 +121,6 @@ session_start();
 	"; </script>");
       ?>
 
-      <div id="dummy">
-      </div>
 
 		<script type="text/javascript">
 		console.log('Hello');
@@ -211,11 +211,13 @@ session_start();
         
         </table>
 		</br>
-		<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
+		<p id="buttons">
+			<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
+			<a class="btn btn-default" href="logout.php">Logout</a>
+			<a class="btn btn-default" href="avail.php">Check Group Availability</a>
+			<a class="btn btn-default" href="deleteuser.php">Delete User</a>
+		</p>
 	</form>
-
-
-<a class="btn btn-default" href="logout.php">Logout</a>
   </body>
 </html>
 

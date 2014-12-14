@@ -44,23 +44,18 @@ if (isset($_SESSION['error']) ) {
 			include("head.html");
 		?>
 	<body>
+		<h2>Register:</h2>
+			</br>
 		<form id="formstyle" method="post">
-			<h2>Register:</h2>
-			</br>
-			<b>User Name:</b>
-			</br>
+			
+			<p>User Name:</p>
 			<input type="text" name="uniqname" placeholder="Enter your UMSI uniqname"  > 
-			</br>
-			<b>E-mail Address:</b>
-			</br>
+			<p>E-mail Address:</p>
 			<input type="email" name="email" placeholder="Enter your preferred email address">
-			</br>
 
-			<b>Password:</b>
-			</br>
+			<p>Password:</p>
 			<input type="password" name="pw" placeholder="Enter a password" ></br>
-			<b>Re-type Password:</b>
-			</br>
+			<p>Re-type Password:</p>
 			<input type="password" name="rpw" placeholder="Verify your password" >
 			</br>
 			</br>
