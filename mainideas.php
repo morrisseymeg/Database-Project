@@ -1,17 +1,9 @@
 <?php
 require_once "pdo.php";
 session_start();
-// if (isset($_POST['hidden1'])){
-// 	// echo $_POST['hidden1'];
-// 	// header('Location: mainideas.php');
-// 	// return;
-// }
-
-	$user_ID = $_SESSION['user_id'];
-	$uniqname = $_SESSION['uniqname'];
-	echo "<div>You are logged in as: ".$uniqname."</div></br>";
-	
-
+$user_ID = $_SESSION['user_id'];
+$uniqname = $_SESSION['uniqname'];
+echo "<div>You are logged in as: ".$uniqname."</div></br>";
 ?>
 <html>
   	<?php

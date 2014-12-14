@@ -2,7 +2,7 @@ body {
     background-color: #ffffff ;
     margin: 1px;
     padding: 3px;
-    font-size: 30px;
+    font-size: 15px;
 	font-family: Verdana, sans-serif;
 	color: #002a5b;
 	text-align: center;
@@ -61,4 +61,7 @@ tr {
 td {
 	text-align: center;
 	padding: .5%;
+}
+.funf {
+	
 }
