@@ -9,13 +9,13 @@ session_start();
 	$user_ID = $_SESSION['user_id'];
 	$uniqname = $_SESSION['uniqname'];
 	echo "You are logged in as: ".$uniqname."</br>";
+	
 
 ?>
 <html>
-  <head> Scheduler 
-  	<script type="text/javascript" src="jquery.min.js">
-		</script>
-	</head>
+  	<?php
+		include("head.html");
+	?>
   <body>
 	<p class='funf'>Your calendar</p>
 	<form method="post" name="calendar" id="form" action="">
@@ -210,12 +210,12 @@ session_start();
 </script>
         
         </table>
-		
-		<input type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
+		</br>
+		<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>
 
 
-<a href="logout.php">Logout</a>
+<a class="btn btn-default" href="logout.php">Logout</a>
   </body>
 </html>
 

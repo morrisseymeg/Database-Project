@@ -32,24 +32,23 @@
             clearstatcache()
         ?>
 <html>
-<head>
-</head>
+	<?php
+		include("head.html");
+	?>
 <body style="font-family: sans-serif;">
-<h1>Please Log In</h1>
-<?php
-    if ( isset($_SESSION["error"]) ) {
-        echo('<p style="color:red">Error: '.$_SESSION["error"]."</p>\n");
-        unset($_SESSION["error"]);
-    }
-    
-    
-?>
-<form method="post">
-<p>Uniqname: <input type="text" name="uniqname" value=""></p>
-<p>Password: <input type="password" name="pw" value=""></p> 
-<p><input type="submit" value="Log In"></p>
-</form>
-</br>
-<a href="signup.php">First time? Sign up here!</a>
+	<h1>Please Log In</h1>
+	<?php
+		if ( isset($_SESSION["error"]) ) {
+			echo('<p style="color:red">Error: '.$_SESSION["error"]."</p>\n");
+			unset($_SESSION["error"]);
+		}
+	?>
+	<form method="post">
+		<p>Uniqname: <input type="text" name="uniqname" value=""></p>
+		<p>Password: <input type="password" name="pw" value=""></p> 
+		<p><input class="btn btn-default" type="submit" value="Log In"></p>
+	</form>
+	</br>
+	<a class="btn btn-default" href="signup.php">First time? Sign up here!</a>
 </body>
 </html>

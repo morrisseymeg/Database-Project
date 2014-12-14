@@ -40,9 +40,9 @@ if (isset($_SESSION['error']) ) {
 
 
 <html>
-	<head>
-		<title>Register Page</title>
-	</head>
+		<?php
+			include("head.html");
+		?>
 	<body>
 		<form method="post">
 			<h2>Register:</h2>
@@ -63,7 +63,8 @@ if (isset($_SESSION['error']) ) {
 			</br>
 			<input type="password" name="rpw" placeholder="Verify your password" >
 			</br>
-			<input type="submit" value="Register!" >
+			</br>
+			<input class="btn btn-default" type="submit" value="Register!" >
 		</form>
 	</body>
 </html>
