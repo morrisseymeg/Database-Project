@@ -77,10 +77,14 @@
 			$dayID = $count%8; // day id
 			if ($dayID != 0){
 				$timeID = floor($count/8) +1; //time period id
+				//Checking to see if value is already in table before adding
+			
+	  			//$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
+			    //    VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)
+			    //    ON DUPLICATE KEY UPDATE ;
+				//	";
+				$sql = "UPDATE avail SET day_id = :day_ID, avail = :avail, time_id = :time_id, user_id = :user_id, cell_ID = :cell_ID) WHERE avail != :avail ;"
 				
-	  			$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
-			        VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)
-			        ";
 			    $stmt = $pdo->prepare($sql);
 			    
 			        $stmt->execute(array(

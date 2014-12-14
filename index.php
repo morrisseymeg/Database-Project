@@ -35,7 +35,7 @@
 	<?php
 		include("head.html");
 	?>
-<body style="font-family: sans-serif;">
+<body id="bodystyle">
 	<h1>Please Log In</h1>
 	<?php
 		if ( isset($_SESSION["error"]) ) {
@@ -43,12 +43,17 @@
 			unset($_SESSION["error"]);
 		}
 	?>
-	<form method="post">
+	<form id="formstyle" method="post">
 		<p>Uniqname: <input type="text" name="uniqname" value=""></p>
 		<p>Password: <input type="password" name="pw" value=""></p> 
 		<p><input class="btn btn-default" type="submit" value="Log In"></p>
 	</form>
-	</br>
 	<a class="btn btn-default" href="signup.php">First time? Sign up here!</a>
 </body>
+</br>
+<footer>
+	<?php
+		include("footer.html");
+	?>
+</footer>
 </html>

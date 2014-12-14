@@ -44,7 +44,7 @@ if (isset($_SESSION['error']) ) {
 			include("head.html");
 		?>
 	<body>
-		<form method="post">
+		<form id="formstyle" method="post">
 			<h2>Register:</h2>
 			</br>
 			<b>User Name:</b>

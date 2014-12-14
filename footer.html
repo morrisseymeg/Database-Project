@@ -1,0 +1,9 @@
+<footer id="footer">
+    &copy; 2014
+	<?php    
+		$filename= basename($_SERVER['REQUEST_URI']);
+		if (file_exists($filename)) {
+			echo "$filename was last modified: " . date ("F d Y H:i:s.", filemtime($filename));
+		}
+	?>
+</footer>
