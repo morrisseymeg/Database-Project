@@ -20,7 +20,7 @@ echo "Generating your group's availability</br>";
 from avail join days on avail.day_id = days.day_id
 join time on avail.time_id = time.time_id
 group by avail.day_id, avail.time_id 
-having sum(avail.avail)>0');
+having sum(avail.avail)=0');
 			// $sth->execute();
 			$rows = $stmt->fetchall(PDO::FETCH_ASSOC);
 // print_r($rows);
