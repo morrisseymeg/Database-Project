@@ -45,6 +45,7 @@ CONSTRAINT FOREIGN KEY (user_id)
 
 
 
+<<<<<<< Updated upstream
 INSERT INTO `meggiemo-scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Monday');
 INSERT INTO `meggiemo-scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Tuesday');
 INSERT INTO `meggiemo-scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Wednesday');
@@ -80,5 +81,42 @@ INSERT INTO `meggiemo-scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '20:00
 INSERT INTO `meggiemo-scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '20:30 - 21:00');
 INSERT INTO `meggiemo-scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '21:00 - 21:30');
 INSERT INTO `meggiemo-scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '21:30 - 22:00');
+=======
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Monday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Tuesday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Wednesday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Thursday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Friday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Saturday');
+INSERT INTO `huangxi_scheduler`.`days` (`day_id`, `day`) VALUES (NULL, 'Sunday');
+
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '8:30 - 9:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '9:00 - 9:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '9:30 - 10:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '10:00 - 10:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '10:30 - 11:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '11:00 - 11:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '11:30 - 12:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '12:00 - 12:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '12:30 - 13:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '13:00 - 13:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '13:30 - 14:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '14:00 - 14:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '14:30 - 15:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '15:00 - 15:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '15:30 - 16:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '16:00 - 16:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '16:30 - 17:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '17:00 - 17:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '17:30 - 18:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '18:00 - 18:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '18:30 - 19:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '19:00 - 19:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '19:30 - 20:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '20:00 - 20:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '20:30 - 21:00');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '21:00 - 21:30');
+INSERT INTO `huangxi_scheduler`.`time` (`time_id`, `Time`) VALUES (NULL, '21:30 - 22:00');
+>>>>>>> Stashed changes
 
 
