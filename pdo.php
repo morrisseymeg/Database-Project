@@ -1,6 +1,6 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=scheduler', 
-   'fred', 'zap');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=meggiemo_scheduler', 
+   'meggiemo-fred', 'zap');
 // See the "errors" folder for details...
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
