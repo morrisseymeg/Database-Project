@@ -19,6 +19,9 @@ session_start();
 			//var_dump($row);
 			$stmt->execute(array(":uniqname" => $uniqname, ":pw" => $pw));
 			echo 'User successfully deleted.';
+			$stmt = $pdo->prepare("DELETE FROM avail WHERE user_id = :user_id");
+			$sql = "DELETE FROM avail WHERE user_id = :user_id";
+			$stmt->execute(array(":user_id" => $user_id));
                 }
                 elseif($row['user_id']===NULL){
                     $_SESSION['error'] = "It seems like you don't have an account yet, would you like to register?";
