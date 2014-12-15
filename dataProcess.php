@@ -36,24 +36,25 @@
 				// echo $callID.;
 			$dayID = $count%8; // day id
 			if ($dayID != 0){
-			$timeID = floor($count/8) +1; //time period id
-						$sql = "UPDATE avail SET  
-				            avail = :avail 
-				            WHERE user_id = :user_id
-				            AND day_id = :day_id
-				            AND time_id = :time_id";
-				    	$stmt = $pdo->prepare($sql);
-				    	$stmt->execute(array(
-					        	':day_id' => $dayID,
-					        	':time_id' => $timeID,
-					        	':avail'=> $_POST[$count]['avail'],
-					        	':user_id'=> $user_ID,
-					        	// ':cell_ID'=> $count,
-					        ));
-				    }
+				$timeID = floor($count/8) +1; //time period id
+				$sql = "UPDATE avail SET  
+					avail = :avail 
+					WHERE user_id = :user_id
+					AND day_id = :day_id
+					AND time_id = :time_id";
+				$stmt = $pdo->prepare($sql);
+				$stmt->execute(array(
+						':day_id' => $dayID,
+						':time_id' => $timeID,
+						':avail'=> $_POST[$count]['avail'],
+						':user_id'=> $user_ID,
+						// ':cell_ID'=> $count,
+				));
+			}
 	    	$count++;
 	    }
 	} else{
+
 	echo "need to create row.".'   ';
 	$count = 0;
 	while ($count<216){
@@ -77,9 +78,10 @@
 			        	':cell_ID'=> $count,
 			        ));
 		    // }
+			    }
+
+			$count++;
 		}
-		$count++;
-					}
 					
 	}
 ?>
