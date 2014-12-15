@@ -20,7 +20,7 @@ from avail join days on avail.day_id = days.day_id
 join time on avail.time_id = time.time_id
 group by avail.time_id, avail.day_id 
 having sum(avail.avail)>0');
-
+?>
         
 	</body>
 </html>
