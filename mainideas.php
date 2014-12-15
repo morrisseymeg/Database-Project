@@ -115,8 +115,7 @@ echo "<div>You are logged in as: ".$uniqname."</div></br>";
 	"; </script>");
       ?>
 
-      <div id="dummy">
-      </div>
+      
 
 		<script type="text/javascript">
 		console.log('Hello');
@@ -209,9 +208,11 @@ echo "<div>You are logged in as: ".$uniqname."</div></br>";
 		</br>
 		<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>
-
-<a class="btn btn-default" href="avail.php">Show me my groups availability.</a>
-<a class="btn btn-default" href="logout.php">Logout</a>
+<p>
+	<a class="btn btn-default" href="avail.php">Show me my groups availability.</a>
+	<a class="btn btn-default" href="deleteuser.php">Delete User</a>
+	<a class="btn btn-default" href="logout.php">Logout</a>
+</p>
   </body>
 </html>
 

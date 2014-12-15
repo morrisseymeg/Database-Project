@@ -49,6 +49,7 @@ session_start();
 		<p id="buttons">
 			<input class="btn btn-default" type="submit" value="Delete User">
 			<a class="btn btn-default" href="signup.php">Register</a>
+			<a class="btn btn-default" href="mainideas.php">Back</a>
 		</p>
 	</form>
 </body>
