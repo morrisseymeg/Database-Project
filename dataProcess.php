@@ -72,7 +72,7 @@
 	$count = 0;
 	while ($count<216){
 		$callID = "hidden".$count;
-		// if (isset($_POST[$callID])){
+		if (isset($_POST[$callID])){
 			// echo $callID;
 			$dayID = $count%8; // day id
 			if ($dayID != 0){
@@ -90,11 +90,11 @@
 			        $stmt->execute(array(
 			        	':day_id' => $dayID,
 			        	':time_id' => $timeID,
-			        	':avail'=> $_POST[$count]['avail'],
+			        	':avail'=> $_POST[$count],
 			        	':user_id'=> $user_ID,
 			        	':cell_ID'=> $count,
 			        ));
-		    // }
+		    }
 		}
 		$count++;
 					}
