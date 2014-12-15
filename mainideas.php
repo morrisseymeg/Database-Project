@@ -11,6 +11,7 @@ echo "<div>You are logged in as: ".$uniqname."</div></br>";
   	<?php
 		include("head.html");
 	?>
+	
   <body>
 	<p class='funf'>Your calendar</p>
 	<form method="post" name="calendar" id="form" action="">

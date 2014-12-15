@@ -30,7 +30,8 @@ having sum(avail.avail)>0');
 			}
 			// echo $rows[7];
 ?>
-
+<a class="btn btn-default" href="mainideas.php">Go Back to Update my Availability</a>
+<a class="btn btn-default" href="logout.php">Logout</a>
         
 	</body>
 </html>
