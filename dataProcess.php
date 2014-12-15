@@ -26,23 +26,10 @@
 	// var userID = ". $user_ID .
 	// "; </script>");
 	// // echo "$avail = <script type='text/javascript'>document.getElementById(hiddenID).value </script>;";
-	
-
 //############# trying ajex again...
-
-
-
-
-
-
-
 //#############	
-
-
-
 	if($stmt->rowCount() > 0){
 		echo "there is something".'   '."</br>";
-
 		$count = 0;
 		while ($count<216){
 			$callID = "hidden".$count;
@@ -65,62 +52,36 @@
 				));
 			}
 	    	$count++;
-
 	    }
 	} else{
-		echo "need to create row.";
 
-		$count = 0;
-		while ($count<216){
-			$callID = "hidden".$count;
-				// echo $callID.;
+	echo "need to create row.".'   ';
+	$count = 0;
+	while ($count<216){
+		$callID = "hidden".$count;
+		// if (isset($_POST[$callID])){
+			// echo $callID;
 			$dayID = $count%8; // day id
 			if ($dayID != 0){
 				$timeID = floor($count/8) +1; //time period id
-				$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
-						VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)";
-				$stmt = $pdo->prepare($sql);
-				$stmt->execute(array(
-						':day_id' => $dayID,
-						':time_id' => $timeID,
-						':avail'=> $_POST[$count]['avail'],
-						':user_id'=> $user_ID,
-						':cell_ID'=> $count,
-				));
-			}
-		
-			/*$callID = "hidden".$count;
-			if (isset($_POST[$callID])){
-				// echo $callID;
-				$dayID = $count%8; // day id
-				if ($dayID != 0){
-					$timeID = floor($count/8) +1; //time period id
-					//Checking to see if value is already in table before adding
 				
+	  			$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
+			        VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)
+			        ";
+			    $stmt = $pdo->prepare($sql);
+			    
+			        $stmt->execute(array(
+			        	':day_id' => $dayID,
+			        	':time_id' => $timeID,
+			        	':avail'=> $_POST[$count]['avail'],
+			        	':user_id'=> $user_ID,
+			        	':cell_ID'=> $count,
+			        ));
+		    // }
+			    }
 
-				if (avail == :avail) {
-					$sql = "INSERT into avail (day_id, avail, time_id, user_id, cell_ID)
-						VALUES (:day_id, :avail, :time_id, :user_id, :cell_ID)";
-				} else
-					{
-					$sql = "UPDATE avail SET day_id = :day_ID, avail = :avail, time_id = :time_id, user_id = :user_id, cell_ID = :cell_ID);"
-					
-					$stmt = $pdo->prepare($sql);
-					
-						$stmt->execute(array(
-							':day_id' => $dayID,
-							':time_id' => $timeID,
-							':avail'=> $_POST[$count],
-							':user_id'=> $user_ID,
-							':cell_ID'=> $count,
-						));
-				}}
-			}*/
 			$count++;
 		}
 					
 	}
-
 ?>
-
-

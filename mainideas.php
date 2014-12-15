@@ -1,16 +1,18 @@
 <?php
 require_once "pdo.php";
 session_start();
+
 $user_ID = $_SESSION['user_id'];
 $uniqname = $_SESSION['uniqname'];
 echo "<div>You are logged in as: ".$uniqname."</div></br>";
+
 ?>
 <html>
   	<?php
 		include("head.html");
 	?>
+	
   <body>
-	</br>
 	<p class='funf'>Your calendar</p>
 	<form method="post" name="calendar" id="form" action="">
     <table id="target">
@@ -113,6 +115,8 @@ echo "<div>You are logged in as: ".$uniqname."</div></br>";
 	"; </script>");
       ?>
 
+      <div id="dummy">
+      </div>
 
 		<script type="text/javascript">
 		console.log('Hello');
@@ -203,13 +207,11 @@ echo "<div>You are logged in as: ".$uniqname."</div></br>";
         
         </table>
 		</br>
-		<p id="buttons">
-			<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
-			<a class="btn btn-default" href="logout.php">Logout</a>
-			<a class="btn btn-default" href="avail.php">Check Group Availability</a>
-			<a class="btn btn-default" href="deleteuser.php">Delete User</a>
-		</p>
+		<input class="btn btn-default" type="submit" value="Update My Schedule!!!!" onclick="testing()"/>
 	</form>
+
+<a class="btn btn-default" href="avail.php">Show me my groups availability.</a>
+<a class="btn btn-default" href="logout.php">Logout</a>
   </body>
 </html>
 
